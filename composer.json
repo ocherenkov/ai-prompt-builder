@@ -1,0 +1,27 @@
+{
+  "name": "php-mvc/ai-prompt-builder",
+  "version": "1.0.0",
+  "description": "A flexible AI Prompt Builder using PHP MVC architecture with SOLID principles and design patterns.",
+  "type": "project",
+  "require": {
+    "php": "^8.2",
+    "ext-pdo": "*"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^10.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\": "app/",
+      "Core\\": "core/",
+      "Database\\Seeders\\": "database/seeders/"
+    }
+  },
+  "scripts": {
+    "start": "php -S localhost:8000 -t public",
+    "test": "phpunit --testdox",
+    "migrate": "php migrate.php up",
+    "migrate:down": "php migrate.php down",
+    "db:seed": "php seed.php"
+  }
+}

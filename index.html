@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Prompt Builder</title>
+    <link href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" rel="stylesheet">
+    <link href="/public/css/style.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="/public/js/components/promptSections.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4f46e5',
+                        secondary: '#6b7280',
+                        context: '#EEF3FF',
+                        task: '#EDFCF2',
+                        format: '#F9F0FC'
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.2s ease-in-out',
+                        'slide-up': 'slideUp 0.2s ease-in-out',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': {opacity: '0'},
+                            '100%': {opacity: '1'},
+                        },
+                        slideUp: {
+                            '0%': {transform: 'translateY(20px)', opacity: '0'},
+                            '100%': {transform: 'translateY(0)', opacity: '1'},
+                        },
+                    },
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<div id="app">
+    <!-- Toast container -->
+    <div id="toast-container" class="fixed top-4 right-4 z-50"></div>
+
+    <!-- Loading overlay -->
+    <div id="loading-overlay" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-40">
+        <div class="bg-white p-6 rounded-lg shadow-xl flex items-center space-x-4 fade-in">
+            <div class="loading-spinner"></div>
+            <p class="text-gray-700">Loading...</p>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="main-nav">
+        <div class="nav-container px-4">
+            <div class="flex items-center space-x-6">
+                <a href="#" data-route="home" class="nav-brand">AI Prompt Builder</a>
+                <div class="flex items-baseline space-x-4">
+                    <a href="#" data-route="prompts" class="nav-link">Prompts</a>
+                    <a href="#" data-route="create-prompt" class="nav-link">Create Prompt</a>
+                </div>
+            </div>
+            <div class="nav-links">
+                <div id="authButtons" class="flex items-center space-x-4">
+                    <a href="#" data-route="login" class="btn btn-secondary">Login</a>
+                    <a href="#" data-route="register" class="btn btn-primary">Register</a>
+                </div>
+                <div id="userMenu" class="hidden relative">
+                    <button type="button" id="userMenuButton"
+                            class="flex items-center space-x-2 text-gray-600 hover:text-gray-900">
+                        <span id="userName" class="text-sm font-medium"></span>
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </button>
+                    <div id="userMenuDropdown"
+                         class="hidden absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 ring-1 ring-black ring-opacity-5">
+                        <button id="logoutButton"
+                                class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Logout
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main content -->
+    <main id="main-content" class="py-6">
+        <!-- Dynamic content will be inserted here -->
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white mt-auto py-6">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-sm text-gray-500">&copy; 2025 AI Prompt Builder. All rights reserved.</p>
+        </div>
+    </footer>
+</div>
+
+<!-- Scripts -->
+<script src="/public/js/api.js"></script>
+<script src="/public/js/router.js"></script>
+<script src="/public/js/app.js"></script>
+</body>
+</html>
