@@ -3,6 +3,7 @@
 use App\Controllers\CategoryController;
 use App\Controllers\CSRFController;
 use App\Controllers\PromptController;
+use Core\Middleware\AuthMiddleware;
 use Core\Router;
 
 // CSRF Token
@@ -11,9 +12,9 @@ Router::get('/api/csrf-token', [CSRFController::class, 'token']);
 // Prompt Routes
 Router::get('/api/prompts', [PromptController::class, 'index']);
 Router::get('/api/prompts/{id}', [PromptController::class, 'show']);
-Router::post('/api/prompts', [PromptController::class, 'store']);
-Router::put('/api/prompts/{id}', [PromptController::class, 'update']);
-Router::delete('/api/prompts/{id}', [PromptController::class, 'delete']);
+Router::post('/api/prompts', [PromptController::class, 'store'], [AuthMiddleware::class]);
+Router::put('/api/prompts/{id}', [PromptController::class, 'update'], [AuthMiddleware::class]);
+Router::delete('/api/prompts/{id}', [PromptController::class, 'delete'], [AuthMiddleware::class]);
 
 Router::get('/api/prompts/category/{id}', [PromptController::class, 'byCategory']);
 
